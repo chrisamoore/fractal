@@ -12,6 +12,7 @@
 namespace League\Fractal;
 
 use League\Fractal\Resource\ResourceAbstract;
+use League\Fractal\Resource\ResourceInterface;
 use League\Fractal\Serializer\DataArraySerializer;
 use League\Fractal\Serializer\SerializerAbstract;
 
@@ -47,7 +48,7 @@ class Manager
 
     /**
      * Serializer
-     * 
+     *
      * @var \League\Fractal\Serializer\SerializerAbstract
      **/
     protected $serializer;
@@ -71,7 +72,7 @@ class Manager
      * @param string $parentScopeInstance
      * @return \League\Fractal\Scope
      **/
-    public function createData(ResourceAbstract $resource, $scopeIdentifier = null, $parentScopeInstance = null)
+    public function createData(ResourceInterface $resource, $scopeIdentifier = null, $parentScopeInstance = null)
     {
         $scopeInstance = new Scope($this, $resource, $scopeIdentifier);
 
@@ -104,7 +105,7 @@ class Manager
     {
         return isset($this->includeParams[$include]) ? $this->includeParams[$include] : null;
     }
-    
+
     /**
      * Get Requested Includes
      *
@@ -115,7 +116,7 @@ class Manager
     {
         return $this->requestedIncludes;
     }
-    
+
     /**
      * Get Serializer
      *
@@ -154,7 +155,7 @@ class Manager
         }
 
         foreach ($includes as $include) {
-            
+
             list($includeName, $allModifiersStr) = array_pad(explode(':', $include, 2), 2, null);
 
             // Trim it down to a cool level of recursion
@@ -180,13 +181,13 @@ class Manager
             $modifierArr = array();
 
             for ($modifierIt = 0; $modifierIt < $modifierCount; $modifierIt++) {
-                
+
                 // [1] is the modifier
                 $modifierName = $allModifiersArr[1][$modifierIt];
 
                 // and [2] is delimited params
                 $modifierParamStr = $allModifiersArr[2][$modifierIt];
-                
+
                 // Make modifier array key with an array of params as the value
                 $modifierArr[$modifierName] = explode($this->paramDelimiter, $modifierParamStr);
             }

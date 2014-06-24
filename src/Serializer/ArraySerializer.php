@@ -1,4 +1,4 @@
-<?php
+'<?php
 
 /*
  * This file is part of the League\Fractal package.
@@ -19,7 +19,7 @@ class ArraySerializer extends SerializerAbstract
 {
     /**
      * Serialize a collection
-     * 
+     *
      * @param  string  $resourceKey
      * @param  array  $data
      * @return array
@@ -31,7 +31,7 @@ class ArraySerializer extends SerializerAbstract
 
     /**
      * Serialize an item
-     * 
+     *
      * @param  string  $resourceKey
      * @param  array  $data
      * @return array
@@ -43,7 +43,7 @@ class ArraySerializer extends SerializerAbstract
 
     /**
      * Serialize the included data
-     * 
+     *
      * @param  string  $resourceKey
      * @param  array  $data
      * @return array
@@ -55,7 +55,7 @@ class ArraySerializer extends SerializerAbstract
 
     /**
      * Serialize the meta
-     * 
+     *
      * @param  array  $meta
      * @return array
      **/
@@ -102,7 +102,7 @@ class ArraySerializer extends SerializerAbstract
 
     /**
      * Serialize the cursor
-     * 
+     *
      * @param  \League\Fractal\Pagination\CursorInterface  $cursor
      * @return array
      **/
@@ -126,6 +126,6 @@ class ArraySerializer extends SerializerAbstract
      */
     public function serializeDisplayAvailableIncludes(TransformerAbstract $transformer)
     {
-        return array('availableIncludes' => $transformer->getAvailableIncludes());
+        return array('embeds' => $transformer->getAvailableIncludes());
     }
 }
